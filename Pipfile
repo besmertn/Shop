@@ -11,6 +11,13 @@ flask-sqlalchemy = "*"
 flask-cors = "*"
 flask-migrate = "*"
 flask-login = "*"
+flask-wtf = "*"
+marshmallow = "*"
+pylint = "*"
+flake8 = "*"
+pyzbar = "*"
+python-barcode = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"

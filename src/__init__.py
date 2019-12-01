@@ -2,12 +2,14 @@ from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 
 from config import Config
 
 
 cors = CORS()
 db = SQLAlchemy()
+ma = Marshmallow()
 migrate = Migrate()
 
 
@@ -17,10 +19,11 @@ def create_app(config_object=Config):
 
     cors.init_app(app)
     db.init_app(app)
+    ma.init_app(app)
     migrate.init_app(app, db)
 
-    from .users.routes import bp as users_bp
+    from .auth import bp as auth_bp
 
-    app.register_blueprint(users_bp, url_prefix='/api')
+    app.register_blueprint(auth_bp, url_prefix='/auth')
 
     return app

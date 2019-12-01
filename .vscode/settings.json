@@ -1,5 +1,10 @@
 {
     "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.pythonPath": "C:\\Users\\Aleksandr\\.virtualenvs\\Shop-Nv3AywA5\\Scripts\\python.exe",
     "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": false
+    "python.linting.flake8Args": [
+        "--max-line-length=130",
+        "--ignore=E402,F401"
+    ]
 }
