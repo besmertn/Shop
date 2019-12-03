@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a08f939dc90c882c2ba62dcf4501d1d4c803515eae7c2f3270fad76069c79439"
+            "sha256": "82e4c58055bba437f1af7a7b9ba154693e22ea383803495de86adea67820cbf9"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -44,6 +44,13 @@
             "markers": "sys_platform == 'win32'",
             "version": "==0.4.1"
         },
+        "dominate": {
+            "hashes": [
+                "sha256:6e833aea505f0236a9fc692326bac575f8bd38ae0f3a1bdc73d20ca606ac75d5",
+                "sha256:a92474b4312bd8b4c1789792f3ec8c571cd8afa8e7502a2b1c64dd48cd67e59c"
+            ],
+            "version": "==2.4.0"
+        },
         "entrypoints": {
             "hashes": [
                 "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19",
@@ -66,6 +73,13 @@
             ],
             "index": "pypi",
             "version": "==1.1.1"
+        },
+        "flask-bootstrap": {
+            "hashes": [
+                "sha256:cb08ed940183f6343a64e465e83b3a3f13c53e1baabb8d72b5da4545ef123ac8"
+            ],
+            "index": "pypi",
+            "version": "==3.3.7.1"
         },
         "flask-cors": {
             "hashes": [
@@ -335,6 +349,12 @@
             ],
             "markers": "implementation_name == 'cpython' and python_version < '3.8'",
             "version": "==1.4.0"
+        },
+        "visitor": {
+            "hashes": [
+                "sha256:2c737903b2b6864ebc6167eef7cf3b997126f1aa94bdf590f90f1436d23e480a"
+            ],
+            "version": "==0.1.3"
         },
         "werkzeug": {
             "hashes": [

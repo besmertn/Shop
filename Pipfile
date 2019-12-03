@@ -18,6 +18,7 @@ flake8 = "*"
 pyzbar = "*"
 python-barcode = "*"
 pillow = "*"
+flask-bootstrap = "*"
 
 [requires]
 python_version = "3.7"

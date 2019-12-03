@@ -14,7 +14,7 @@ class LoginForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user is None:
-            raise ValidationError('Please use a different username.')
+            raise ValidationError('No such user.')
 
 
 class RegistrationForm(FlaskForm):
