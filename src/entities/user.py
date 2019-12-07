@@ -1,9 +1,10 @@
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-from src import db
+from src import db, login
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -25,3 +26,8 @@ class User(db.Model):
     @classmethod
     def find_by_username(cls, username):
         return cls.query.filter_by(username=username).first()
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))

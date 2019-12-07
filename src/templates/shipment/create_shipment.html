@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div class="container">
+        <div class="col-md-4">
+            <form class="form form-horizontal" method="post" role="form">
+                {{ wtf.form_field(form.datetime) }}
+                {{ wtf.form_field(form.products) }}
+                <div class="container" id="products_shipment_table">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in form.products.data %}
+                            <tr>
+                                <td>{{ product['name'] }}</td>
+                                <td>{{ product['unit'] }}</td>
+                                <td>{{ product['price'] }}</td>
+                                <td>{{ product['amount'] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btn btn-default"><a href="{{ url_for('shipment.add_product') }}">Add Product</a></div>
+                {{ wtf.form_field(form.submit) }}
+              </form>
+        </div>
+    </div>
+{% endblock %}

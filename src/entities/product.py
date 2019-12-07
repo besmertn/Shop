@@ -1,23 +1,24 @@
 from random import randint
+from datetime import datetime
 import enum
 
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+from marshmallow import Schema, fields, post_load
 
 from src import db
 
 
 class UnitEnum(enum.Enum):
-    GRAM = 'g'
-    PIECE = 'pc'
-    LITRE = 'l'
+    gram = 'gram'
+    piece = 'piece'
+    litre = 'litre'
 
 
 class Product(db.Model):
     __tablename__ = 'products'
 
     id = db.Column(db.Integer, primary_key=True)
-    shipment_id = db.Column(db.Integer, db.ForeignKey('shipment.id'), nullable=False)
+    shipment_id = db.Column(db.Integer, db.ForeignKey('shipments.id'), nullable=False)
     name = db.Column(db.String, nullable=False)
     unit = db.Column(db.Enum(UnitEnum), nullable=False)
     price = db.Column(db.Float, nullable=False)
@@ -42,3 +43,13 @@ class Product(db.Model):
             barcode = self.generate_product_code()
 
         return barcode
+
+
+class ProductSchema(Schema):
+    id = fields.Number()
+    shipment_id = fields.Number()
+    name = fields.Str()
+    unit = fields.Str()
+    price = fields.Float()
+    amount = fields.Number()
+    code = fields.Str()
