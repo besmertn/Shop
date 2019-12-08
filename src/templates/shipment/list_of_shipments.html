@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div class="container">
+        <div class="col-md-4">
+            <div class="container" id="shipment_table_container">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Date Time of Sipment</th>
+                        <th scope="col">List of Shipped Products</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for shipment in shipments %}
+                            <tr>
+                                <td>{{ shipment.id }}</td>
+                                <td>{{ shipment.date }}</td>
+                                <td>
+                                    <ul>
+                                        {% for prod in shipment.products %}
+                                            <li>{{ prod.name }} ({{ prod.amount }}.{{ prod.unit.value }}) </li>
+                                        {% endfor %}
+                                    </ul>
+                                    
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -39,7 +39,7 @@ class Product(db.Model):
         control_digit = ((control_digit_sum // 10) + 1) * 10 - control_digit_sum
         barcode = ''.join([str(x) for x in numbers]) + str(control_digit)
 
-        if self.query.filter_by(code=barcode).first() is None:
+        if self.query.filter_by(code=barcode).first() is not None:
             barcode = self.generate_product_code()
 
         return barcode

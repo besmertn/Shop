@@ -3,12 +3,12 @@
 
 {% block app_content %}
     <div class="container">
-        <div class="col-md-4">
+        <div class="col-md-4" id="create_shipment_container">
             <form class="form form-horizontal" method="post" role="form">
                 {{ wtf.form_field(form.datetime) }}
                 {{ wtf.form_field(form.products) }}
-                <div class="container" id="products_shipment_table">
-                    <table class="table table-striped">
+                <div class="container" id="products_shipment_table_container">
+                    <table class="table table-striped" id="products_shipment_table">
                         <thead>
                         <tr>
                             <th scope="col">Name</th>
@@ -29,6 +29,7 @@
                         </tbody>
                     </table>
                 </div>
+                <br/>
                 <div class="btn btn-default"><a href="{{ url_for('shipment.add_product') }}">Add Product</a></div>
                 {{ wtf.form_field(form.submit) }}
               </form>

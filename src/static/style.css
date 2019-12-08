@@ -3,3 +3,13 @@ h1 {
     margin-right: auto;
     width: fit-content;
 }
+
+#products_shipment_table_container {
+    max-height: 500px;
+    font-family: "Roboto", sans-serif;
+}
+
+#shipment_table_container {
+    max-height: 600px;
+    font-family: "Roboto", sans-serif;
+}

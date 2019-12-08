@@ -10,8 +10,8 @@ from src import global_products
 
 
 class CreateShipmentForm(FlaskForm):
-    datetime = DateTimeField('Shipment date time', validators=[DataRequired()], default=datetime.utcnow())
-    products = HiddenField(label=None)
+    datetime = DateTimeField('Shipment date time', default=datetime.utcnow())
+    products = HiddenField()
     submit = SubmitField('Create Sipment')
 
 
