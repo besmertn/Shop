@@ -23,14 +23,16 @@ class Product(db.Model):
     unit = db.Column(db.Enum(UnitEnum), nullable=False)
     price = db.Column(db.Float, nullable=False)
     amount = db.Column(db.Integer, nullable=False)
+    expiration_period = db.Column(db.Integer, nullable=False)
     code = db.Column(db.String, nullable=False, unique=True)
 
-    def __init__(self, shipment_id, name, unit, price, amount):
+    def __init__(self, shipment_id, name, unit, price, amount, expiration_period):
         self.shipment_id = shipment_id
         self.name = name
         self.unit = unit
         self.price = price
         self.amount = amount
+        self.expiration_period = expiration_period
         self.code = self.generate_product_code()
 
     def generate_product_code(self):

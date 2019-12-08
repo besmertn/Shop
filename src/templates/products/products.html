@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div class="container">
+        <div class="col-md-4">
+            <div class="container" id="shipment_table_container">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Unit</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Expiration date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                            {% if product.shelflife_zone == 'overdue' %}
+                            <tr class="overdue-product">
+                            {% elif product.shelflife_zone == 'risky' %}
+                            <tr class="risky-product">
+                            {% else %}
+                            <tr class="common-product">
+                            {% endif  %}
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.unit.value }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.amount }}</td>
+                                <td>{{ product.code }}</td>
+                                <td>{{ product.expiration_date }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

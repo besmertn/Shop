@@ -28,6 +28,11 @@ class AddProductForm(FlaskForm):
         validators=[NumberRange(min=1, message='You may not add less than one product')],
         default=1
     )
+    expiration_period = IntegerField(
+        label='Expiration Period (Days)',
+        validators=[NumberRange(min=1, message='Expiration period may not be less than 1 day')],
+        default=1
+    )
     submit = SubmitField('Add')
 
     def validate_name(self, name):
@@ -39,5 +44,6 @@ class AddProductForm(FlaskForm):
             "name": self.name.data,
             "unit": self.unit.data,
             "price": self.price.data,
-            "amount": self.amount.data
+            "amount": self.amount.data,
+            "expiration_period": self.expiration_period.data
         }

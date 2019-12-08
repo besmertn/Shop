@@ -31,9 +31,12 @@ def create_app(config_object=Config):
     from .main import bp as main_bp
     from .auth import bp as auth_bp
     from .shipment import bp as shipment_bp
+    from .products import bp as products_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(shipment_bp, url_prefix='/shipment')
+    app.register_blueprint(shipment_bp, url_prefix='/shipment')
+    app.register_blueprint(products_bp, url_prefix='/products')
 
     return app

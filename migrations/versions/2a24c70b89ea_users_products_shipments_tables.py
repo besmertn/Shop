@@ -1,8 +1,8 @@
-"""users, shipments, products tables
+"""users, products, shipments tables
 
-Revision ID: b184bb956e82
+Revision ID: 2a24c70b89ea
 Revises: 
-Create Date: 2019-12-08 10:54:20.194292
+Create Date: 2019-12-08 22:06:53.351231
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b184bb956e82'
+revision = '2a24c70b89ea'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,6 +37,7 @@ def upgrade():
     sa.Column('unit', sa.Enum('gram', 'piece', 'litre', name='unitenum'), nullable=False),
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('amount', sa.Integer(), nullable=False),
+    sa.Column('expiration_period', sa.Integer(), nullable=False),
     sa.Column('code', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['shipment_id'], ['shipments.id'], ),
     sa.PrimaryKeyConstraint('id'),

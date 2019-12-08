@@ -13,3 +13,11 @@ h1 {
     max-height: 600px;
     font-family: "Roboto", sans-serif;
 }
+
+.overdue-product {
+    background-color: lightcoral !important;
+}
+
+.risky-product {
+    background-color: gold !important;
+}

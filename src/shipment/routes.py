@@ -30,7 +30,8 @@ def create():
                 name=prod['name'],
                 unit=prod['unit'],
                 price=prod['price'],
-                amount=prod['amount']
+                amount=prod['amount'],
+                expiration_period=prod['expiration_period']
             )
             db.session.add(product)
         db.session.commit()
