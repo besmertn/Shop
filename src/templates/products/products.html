@@ -19,11 +19,11 @@
                     <tbody>
                         {% for product in products %}
                             {% if product.shelflife_zone == 'overdue' %}
-                            <tr class="overdue-product">
+                            <tr class="danger">
                             {% elif product.shelflife_zone == 'risky' %}
-                            <tr class="risky-product">
+                            <tr class="warning">
                             {% else %}
-                            <tr class="common-product">
+                            <tr>
                             {% endif  %}
                                 <td>{{ product.name }}</td>
                                 <td>{{ product.unit.value }}</td>

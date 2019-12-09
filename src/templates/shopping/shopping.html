@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div class="container">
+        <div class="col-md-4">
+            <form class="form form-horizontal" method="post" role="form">
+                {{ wtf.form_field(form.products) }}
+                <div class="container" id="shipment_table_container">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Unit</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Code</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in products %}
+                                <tr>
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ product.unit }}</td>
+                                    <td>{{ product.amount }}</td>
+                                    <td>{{ product.price }}</td>
+                                    <td>{{ product.total_price }}</td>
+                                    <td>{{ product.code }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><h3>Total: </h3></td>
+                                {% if total_cost %}
+                                    <td><h3>{{ total_cost }}</h3></td>
+                                {% else %}
+                                    <td><h3>0.00</h3></td>
+                                {% endif %}
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <a class="btn btn-primary" href="{{ url_for('shopping.add_product') }}">Add Product</a>
+                <a class="btn btn-primary" href="{{ url_for('shopping.scan_product') }}">Scan Product</a>
+                {{ wtf.form_field(form.submit) }}
+                <a class="btn btn-warning" href="{{ url_for('shopping.cancel') }}">Cancel</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

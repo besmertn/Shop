@@ -33,5 +33,4 @@ def index():
         elif (rest / total) * 100 > 90 or (d['expiration_date'] - p.shipment.date.date()).days <= 2:
             d['shelflife_zone'] = "risky"
         products_list.append(d)
-    print(products_list)
     return render_template('products/products.html', title='Products managment', products=products_list)

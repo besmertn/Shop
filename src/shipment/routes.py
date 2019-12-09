@@ -1,14 +1,14 @@
 import json
 
-from flask import render_template, redirect, url_for, request, flash
+from flask import render_template, redirect, url_for, request, flash, current_app
 from flask_login import login_required
-from wtforms.validators import ValidationError
 
 from src import global_products, global_products_json, db
 from src.shipment import bp
 from src.shipment.forms import CreateShipmentForm, AddProductForm
 from src.entities.product import Product
 from src.entities.shipment import Shipment
+from src.barcode_manager import generate_barcode
 
 
 @bp.route('/create', methods=['GET', 'POST'])
@@ -33,6 +33,7 @@ def create():
                 amount=prod['amount'],
                 expiration_period=prod['expiration_period']
             )
+            generate_barcode(product, current_app.config['BARCODE_PATH'])
             db.session.add(product)
         db.session.commit()
         global_products.clear()
@@ -41,6 +42,14 @@ def create():
 
     form.products.data = global_products_json
     return render_template('shipment/create_shipment.html', title='Create Shipment', form=form)
+
+
+@bp.route('/cancel', methods=['GET', 'POST'])
+@login_required
+def cancel():
+    global_products.clear()
+    global_products_json.clear()
+    return redirect(url_for('main.index'))
 
 
 @bp.route('/get', methods=['GET'])

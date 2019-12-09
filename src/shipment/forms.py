@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from flask import jsonify
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SelectField, SubmitField, DateTimeField, HiddenField, FloatField
 from wtforms.validators import ValidationError, DataRequired, NumberRange

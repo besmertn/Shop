@@ -14,10 +14,11 @@ h1 {
     font-family: "Roboto", sans-serif;
 }
 
-.overdue-product {
-    background-color: lightcoral !important;
-}
-
-.risky-product {
-    background-color: gold !important;
+.start-shopping-btn {
+    font-size: 24px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }

@@ -1,9 +1,10 @@
 import os
 
-from flask import send_from_directory, render_template, current_app
+from flask import send_from_directory, render_template, current_app, redirect, url_for
 from flask_login import login_required
 
 from src.main import bp
+from src import global_shopping
 
 
 @bp.route('/favicon.ico')
@@ -16,4 +17,7 @@ def favicon():
 @bp.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title='Home')
+    if not global_shopping:
+        return render_template('index.html', title='Home')
+    else:
+        return redirect(url_for('shopping.index'))

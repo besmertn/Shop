@@ -32,8 +32,9 @@
                     </table>
                 </div>
                 <br/>
-                <div class="btn btn-default"><a href="{{ url_for('shipment.add_product') }}">Add Product</a></div>
+                <a class="btn btn-primary" href="{{ url_for('shipment.add_product') }}">Add Product</a>
                 {{ wtf.form_field(form.submit) }}
+                <a class="btn btn-warning" href="{{ url_for('shipment.cancel') }}">Cancel</a>
               </form>
         </div>
     </div>

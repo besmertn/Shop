@@ -4,6 +4,7 @@ import enum
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from marshmallow import Schema, fields, post_load
+from flask import current_app
 
 from src import db
 
@@ -38,6 +39,7 @@ class Product(db.Model):
     def generate_product_code(self):
         numbers = [randint(0, 9) for i in range(12)]
         control_digit_sum = sum([numbers[i] * 3 for i in range(12) if i % 2 == 1])
+        control_digit_sum += sum([numbers[i] * 1 for i in range(12) if i % 2 == 0])
         control_digit = ((control_digit_sum // 10) + 1) * 10 - control_digit_sum
         barcode = ''.join([str(x) for x in numbers]) + str(control_digit)
 
@@ -45,6 +47,10 @@ class Product(db.Model):
             barcode = self.generate_product_code()
 
         return barcode
+
+    @classmethod
+    def find_by_code(cls, code):
+        return cls.query.filter_by(code=code).first()
 
 
 class ProductSchema(Schema):

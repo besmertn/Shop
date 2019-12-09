@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Invoice</h2>
+            <hr style="border-top: dotted 2px;color:#333;"/>
+            <table class="table">
+                {% for product in products %}
+                    <tr>
+                        <td class="col-md-12">{{product.name}}</td>
+                        <td class="col-md-1">{{product.price}}</td>
+                        <td class="col-md-1">#</td>
+                        <td class="col-md-1">{{product.amount}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <hr style="border-top: dotted 2px;color:#333;"/>
+            <h2>Total: {{total_cost}}</h2>
+            <hr style="border-top: dotted 2px;color:#333;"/>
+            <table>
+                <tr>
+                    <td>Your Cashier is:</td>
+                    <td>User</td>
+                </tr>
+            </table>
+            <br/>
+            <a class="btn btn-warning" href="{{ url_for('main.index') }}">Back</a>
+        </div>
+{% endblock %}

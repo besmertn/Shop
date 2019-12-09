@@ -10,6 +10,7 @@ from config import Config
 
 global_products = []
 global_products_json = []
+global_shopping = {}
 cors = CORS()
 db = SQLAlchemy()
 migrate = Migrate()
@@ -32,11 +33,13 @@ def create_app(config_object=Config):
     from .auth import bp as auth_bp
     from .shipment import bp as shipment_bp
     from .products import bp as products_bp
+    from .shopping import bp as shopping_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(shipment_bp, url_prefix='/shipment')
     app.register_blueprint(shipment_bp, url_prefix='/shipment')
     app.register_blueprint(products_bp, url_prefix='/products')
+    app.register_blueprint(shopping_bp, url_prefix='/shopping')
 
     return app
