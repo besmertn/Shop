@@ -36,6 +36,10 @@
                     </tbody>
                 </table>
             </div>
+            <a class="btn btn-warning" href="{{ url_for('products.add_discount') }}">Add discount for the 'Risky' products</a>
+            <br/>
+            <br/>
+            <a class="btn btn-danger" href="{{ url_for('products.remove') }}">Write off 'Overdue' products</a>
         </div>
     </div>
 {% endblock %}
