@@ -2,9 +2,11 @@ import json
 
 from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_required
+from werkzeug.utils import secure_filename
 
 from src import db, global_shopping
 from src.shopping import bp
+from src.barcode_manager import scan_barcode
 from src.shopping.forms import AddProductForm, ShoppingForm, ScanForm
 from src.entities.product import Product
 
@@ -67,11 +69,14 @@ def add_product():
 @bp.route('/scan_product', methods=['GET', 'POST'])
 @login_required
 def scan_product():
-    form = ScanForm(request.form)
+    form = ScanForm()
     if form.validate_on_submit():
-        if form.barcode_img.data in global_shopping:
-            global_shopping[form.code.data] += form.amount.data
+        f = form.barcode_img.data
+        filename = secure_filename(f.filename)
+        code = scan_barcode(filename)[0].data.decode("utf-8")
+        if code in global_shopping:
+            global_shopping[code] += 1
         else:
-            global_shopping.update({form.code.data: form.amount.data})
+            global_shopping.update({code: 1})
         return redirect(url_for('shopping.index'))
     return render_template('shopping/add_product.html', title='Add a Product', form=form)

@@ -44,6 +44,8 @@
                 </div>
                 <a class="btn btn-primary" href="{{ url_for('shopping.add_product') }}">Add Product</a>
                 <a class="btn btn-primary" href="{{ url_for('shopping.scan_product') }}">Scan Product</a>
+                <br/>
+                <br/>
                 {{ wtf.form_field(form.submit) }}
                 <a class="btn btn-warning" href="{{ url_for('shopping.cancel') }}">Cancel</a>
             </form>

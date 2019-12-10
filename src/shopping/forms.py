@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FileField, HiddenField, IntegerField
-from wtforms.validators import ValidationError, DataRequired, Length, NumberRange
+from wtforms.validators import ValidationError, DataRequired, Length, NumberRange, Required
 
 from src import global_shopping
 from src.entities.product import Product, UnitEnum
@@ -14,8 +14,8 @@ class ShoppingForm(FlaskForm):
 
 
 class ScanForm(FlaskForm):
-    barcode_img = FileField('Select Barcode', validators=[DataRequired()])
-    submit = SubmitField('Scan')
+    barcode_img = FileField('Select Barcode', validators=[Required()])
+    submit = SubmitField('Scan Product')
 
 
 class AddProductForm(FlaskForm):

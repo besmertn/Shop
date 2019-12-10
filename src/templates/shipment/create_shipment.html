@@ -33,6 +33,8 @@
                 </div>
                 <br/>
                 <a class="btn btn-primary" href="{{ url_for('shipment.add_product') }}">Add Product</a>
+                <br/>
+                <br/>
                 {{ wtf.form_field(form.submit) }}
                 <a class="btn btn-warning" href="{{ url_for('shipment.cancel') }}">Cancel</a>
               </form>
